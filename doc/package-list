@@ -1,0 +1,4 @@
+thobe.logfileviewer.plugin.api
+thobe.logfileviewer.plugin.memory
+thobe.logfileviewer.plugin.source.logline
+thobe.logfileviewer.plugin.source.logstream
