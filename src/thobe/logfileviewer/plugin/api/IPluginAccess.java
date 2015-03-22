@@ -15,7 +15,6 @@ import java.util.Set;
 
 import thobe.logfileviewer.plugin.Plugin;
 
-
 /**
  * @author Thomas Obenaus
  * @source IPluginAccess.java
@@ -48,11 +47,11 @@ public interface IPluginAccess
 	 * @return
 	 */
 	public Set<IPluginUI> getPluginsNotAttachedToGui( );
-	
-//	/**
-//	 * Returns the {@link Console}-plugin.
-//	 * Might return null if the {@link Console}-plugin is not yet available.
-//	 * @return
-//	 */
-//	public Console getConsole( );
+
+	/**
+	 * Returns the {@link Console}-plugin.
+	 * Might return null if the {@link Console}-plugin is not yet available.
+	 * @return
+	 */
+	public IConsole getConsole( );
 }

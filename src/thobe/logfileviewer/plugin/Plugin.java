@@ -65,7 +65,7 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	/**
 	 * The version of the plugin-api used for this plugin.
 	 */
-	private static PluginApiVersion		apiVersion	= new PluginApiVersion( );
+	private PluginApiVersion		apiVersion;
 
 	public Plugin( String pluginName, String logChannelName )
 	{
@@ -75,6 +75,7 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 		this.quitRequested = new AtomicBoolean( false );
 		this.attachedToGUI = new AtomicBoolean( false );
 		this.logStreamAccess = null;
+		this.apiVersion	= new PluginApiVersion( );
 	}
 
 	protected Logger LOG( )
