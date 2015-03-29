@@ -12,6 +12,7 @@ package thobe.logfileviewer.plugin.api;
 
 import thobe.logfileviewer.plugin.Plugin;
 import thobe.logfileviewer.plugin.memory.IMemoryWatchable;
+import thobe.logfileviewer.plugin.source.logline.ILogLine;
 import thobe.logfileviewer.plugin.source.logstream.ILogStream;
 import thobe.logfileviewer.plugin.source.logstream.ILogStreamAccess;
 import thobe.logfileviewer.plugin.source.logstream.ILogStreamDataListener;
@@ -112,4 +113,10 @@ public interface IPlugin extends IPluginBase, IMemoryWatchable, ILogStreamDataLi
 	 * @return
 	 */
 	public ILogStream getLogstream( );
+
+	/**
+	 * Returns true if this {@link IPlugin} is enabled (visible, gets {@link ILogLine}s) or false if it is disabled.
+	 * @return
+	 */
+	public boolean isEnabled( );
 }

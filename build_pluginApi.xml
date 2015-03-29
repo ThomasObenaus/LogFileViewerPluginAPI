@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 
-<project name="thobe.logfileviewer.plugin.api" basedir="." default="create-jar">
+<project name="thobe.logfileviewer.plugin.api" basedir="." default="create-all">
 
 	<!-- [init] - task for setup of initial properties -->
 	<target name="init">
 		<echo message="Initial setup" />
 
 		<!-- set version here -->
-		<property name="LFVPA.Program-Version" value="0.2.0" />
+		<property name="LFVPA.Program-Version.Major" value="1" />
+		<property name="LFVPA.Program-Version.Minor" value="0" />
+		<property name="LFVPA.Program-Version.Bugfix" value="0" />
+		<property name="LFVPA.Program-Version" value="${LFVPA.Program-Version.Major}.${LFVPA.Program-Version.Minor}.${LFVPA.Program-Version.Bugfix}" />
 		<!-- set main-class here or uncomment line if u build a library -->		
 		<!-- set licence here -->
 		<property name="LFVPA.License" value="Licensed under the New BSD License (3-clause lic)" />
@@ -29,6 +32,30 @@
 		<tstamp>
 			<format property="LFVPA.creation-date" pattern="YYYY-MM-DD zzz" locale="de,DE" />
 		</tstamp>
+	</target>
+	
+	<target name="setVersion" depends="clean">		    
+		<replaceregexp 	file="${LFVPA.eclipse.src.dir}/thobe/logfileviewer/plugin/thobe.logfileviewer.plugin.api.version"
+						match='major=[0-9]*'
+				        replace='major=${LFVPA.Program-Version.Major}'/>
+		<replaceregexp 	file="${LFVPA.eclipse.src.dir}/thobe/logfileviewer/plugin/thobe.logfileviewer.plugin.api.version"
+						match='minor=[0-9]*'
+						replace='minor=${LFVPA.Program-Version.Minor}'/>
+		<replaceregexp 	file="${LFVPA.eclipse.src.dir}/thobe/logfileviewer/plugin/thobe.logfileviewer.plugin.api.version"
+		     			match='bugfix=[0-9]*'
+			    		replace='bugfix=${LFVPA.Program-Version.Bugfix}'/>
+		<replaceregexp 	file="${LFVPA.eclipse.src.dir}/thobe/logfileviewer/plugin/api/PluginApiVersion.java"
+				     	match='private\s*static\s*final\s*int\s*MAJOR_VERSION\s*=\s*[0-9]*\s*;'
+					    replace='private static final int MAJOR_VERSION = ${LFVPA.Program-Version.Major};'/>
+		<replaceregexp 	file="${LFVPA.eclipse.src.dir}/thobe/logfileviewer/plugin/api/PluginApiVersion.java"
+				     	match='private\s*static\s*final\s*int\s*MINOR_VERSION\s*=\s*[0-9]*\s*;'
+					    replace='private static final int MINOR_VERSION = ${LFVPA.Program-Version.Minor};'/>
+		<replaceregexp 	file="${LFVPA.eclipse.src.dir}/thobe/logfileviewer/plugin/api/PluginApiVersion.java"
+				     	match='private\s*static\s*final\s*int\s*BUGFIX_VERSION\s*=\s*[0-9]*\s*;'
+					    replace='private static final int BUGFIX_VERSION = ${LFVPA.Program-Version.Bugfix};'/>
+		
+		<!--<eclipse.refreshLocal resource="${ant.project.name}" depth="infinite"/>-->
+		<javac srcdir="${LFVPA.eclipse.src.dir}" destdir="${LFVPA.eclipse.build.dir}"/>
 	</target>
 
 	<!-- [create-doc] create api-doc, build/pack zip-file <project-name>_doc.zip -->
@@ -61,6 +88,9 @@
 		<delete dir="${LFVPA.jar.dir}" />
 	</target>
 
+	
+
+	
 	<!-- [print-props-1] print property program-version and licence -->
 	<target name="print-props-1" depends="init">
 		<echo message="Building version '${LFVPA.Program-Version}'" />
@@ -68,7 +98,7 @@
 	</target>
 
 	<!-- [create-jar] create jar file -->
-	<target name="create-jar" depends="clean,print-props-1">
+	<target name="create-jar" depends="clean,print-props-1,setVersion">
 		<echo message="Copy files from build-directory /${LFVPA.eclipse.build.dir} to /${LFVPA.jar.dir}." />
 		<!-- copy files from build dir -->
 		<copy toDir="${LFVPA.jar.dir}/">

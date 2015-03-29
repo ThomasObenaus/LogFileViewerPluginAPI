@@ -65,7 +65,12 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	/**
 	 * The version of the plugin-api used for this plugin.
 	 */
-	private PluginApiVersion		apiVersion;
+	private PluginApiVersion			apiVersion;
+
+	/**
+	 * If true, the {@link Plugin} will be started and added to gui and will get {@link ILogLine}s.
+	 */
+	private boolean						enabled;
 
 	public Plugin( String pluginName, String logChannelName )
 	{
@@ -75,7 +80,8 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 		this.quitRequested = new AtomicBoolean( false );
 		this.attachedToGUI = new AtomicBoolean( false );
 		this.logStreamAccess = null;
-		this.apiVersion	= new PluginApiVersion( );
+		this.apiVersion = new PluginApiVersion( );
+		this.enabled = true;
 	}
 
 	protected Logger LOG( )
@@ -245,5 +251,16 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	public PluginApiVersion getPluginApiVersion( )
 	{
 		return apiVersion;
+	}
+
+	@Override
+	public boolean isEnabled( )
+	{
+		return this.enabled;
+	}
+
+	protected void setEnabled( boolean enable )
+	{
+		this.enabled = enable;
 	}
 }

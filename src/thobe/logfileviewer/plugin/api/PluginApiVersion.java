@@ -25,17 +25,17 @@ public class PluginApiVersion
 	/**
 	 * Increase for incompatible changes
 	 */
-	private static final int	MAJOR_VERSION	= 0;
+	private static final int MAJOR_VERSION = 1;
 
 	/**
 	 * Increase for compatible changes
 	 */
-	private static final int	MINOR_VERSION	= 2;
+	private static final int MINOR_VERSION = 0;
 
 	/**
 	 * Increase for bugfixes
 	 */
-	private static final int	BUGFIX_VERSION	= 0;
+	private static final int BUGFIX_VERSION = 0;
 
 	private static final String	ATTR_MAJOR		= "major";
 	private static final String	ATTR_MINOR		= "minor";
