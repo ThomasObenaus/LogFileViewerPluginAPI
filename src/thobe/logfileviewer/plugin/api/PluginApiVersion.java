@@ -25,7 +25,7 @@ public class PluginApiVersion
 	/**
 	 * Increase for incompatible changes
 	 */
-	private static final int MAJOR_VERSION = 1;
+	private static final int MAJOR_VERSION = 2;
 
 	/**
 	 * Increase for compatible changes

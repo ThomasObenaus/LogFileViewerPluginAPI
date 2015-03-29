@@ -7,7 +7,7 @@
 		<echo message="Initial setup" />
 
 		<!-- set version here -->
-		<property name="LFVPA.Program-Version.Major" value="1" />
+		<property name="LFVPA.Program-Version.Major" value="2" />
 		<property name="LFVPA.Program-Version.Minor" value="0" />
 		<property name="LFVPA.Program-Version.Bugfix" value="0" />
 		<property name="LFVPA.Program-Version" value="${LFVPA.Program-Version.Major}.${LFVPA.Program-Version.Minor}.${LFVPA.Program-Version.Bugfix}" />
