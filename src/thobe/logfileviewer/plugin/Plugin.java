@@ -259,7 +259,8 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 		return this.enabled;
 	}
 
-	protected void setEnabled( boolean enable )
+	@Override
+	public void setEnabled( boolean enable )
 	{
 		this.enabled = enable;
 	}

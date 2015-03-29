@@ -119,4 +119,10 @@ public interface IPlugin extends IPluginBase, IMemoryWatchable, ILogStreamDataLi
 	 * @return
 	 */
 	public boolean isEnabled( );
+
+	/**
+	 * Call this method to enable/disable the plugin
+	 * @param enable
+	 */
+	public void setEnabled( boolean enable );
 }
