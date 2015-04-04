@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JComponent;
 
 import thobe.logfileviewer.plugin.api.IPlugin;
+import thobe.logfileviewer.plugin.api.IPluginPreferences;
 import thobe.logfileviewer.plugin.api.IPluginUI;
 import thobe.logfileviewer.plugin.api.IPluginWindowManagerAccess;
 import thobe.logfileviewer.plugin.api.PluginApiVersion;
@@ -263,5 +264,12 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	public void setEnabled( boolean enable )
 	{
 		this.enabled = enable;
+	}
+	
+	@Override
+	public IPluginPreferences getPluginPreferences( )
+	{
+		// per default return null --> no preferences for this plugin
+		return null;
 	}
 }

@@ -125,4 +125,11 @@ public interface IPlugin extends IPluginBase, IMemoryWatchable, ILogStreamDataLi
 	 * @param enable
 	 */
 	public void setEnabled( boolean enable );
+
+	/**
+	 * Return a {@link IPluginPreferences} object if your {@link IPlugin} needs to store some information outside its lifecycle. If you
+	 * return null no preferences for this {@link IPlugin} are available.
+	 * @return
+	 */
+	public IPluginPreferences getPluginPreferences( );
 }
