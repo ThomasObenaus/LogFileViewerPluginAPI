@@ -265,11 +265,40 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	{
 		this.enabled = enable;
 	}
-	
+
 	@Override
 	public IPluginPreferences getPluginPreferences( )
 	{
 		// per default return null --> no preferences for this plugin
 		return null;
 	}
+
+	@Override
+	public String getPluginAuthor( )
+	{
+		// per default return null --> no author for this plugin
+		return null;
+	}
+
+	@Override
+	public String getPluginAuthorEMailAddress( )
+	{
+		// per default return null --> no emailaddress for this plugin
+		return null;
+	}
+
+	@Override
+	public String getPluginLicense( )
+	{
+		// per default return null --> no license for this plugin
+		return null;
+	}
+
+	@Override
+	public String getPluginWebsite( )
+	{
+		// per default return null --> no website for this plugin
+		return null;
+	}
+
 }

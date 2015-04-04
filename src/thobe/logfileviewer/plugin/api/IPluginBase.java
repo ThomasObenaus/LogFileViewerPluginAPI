@@ -52,4 +52,28 @@ public interface IPluginBase
 	 * @return
 	 */
 	public PluginApiVersion getPluginApiVersion( );
+
+	/**
+	 * Should return the website where the plugin is hosted at or null if none is available.
+	 * @return
+	 */
+	public String getPluginWebsite( );
+
+	/**
+	 * Should return the license that applies to this plugin or null if none is available.
+	 * @return
+	 */
+	public String getPluginLicense( );
+
+	/**
+	 * Should return the author of this plugin or null if none is available.
+	 * @return
+	 */
+	public String getPluginAuthor( );
+
+	/**
+	 * Should return the email address of the plugins author or null if none is available.
+	 * @return
+	 */
+	public String getPluginAuthorEMailAddress( );
 }
