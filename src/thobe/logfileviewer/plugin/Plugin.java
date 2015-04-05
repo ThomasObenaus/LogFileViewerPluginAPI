@@ -72,7 +72,7 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	 * If true, the {@link Plugin} will be started and added to gui and will get {@link ILogLine}s.
 	 */
 	private boolean						enabled;
-	
+
 	public Plugin( String pluginName, String logChannelName )
 	{
 		super( logChannelName );
@@ -83,6 +83,11 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 		this.logStreamAccess = null;
 		this.apiVersion = new PluginApiVersion( );
 		this.enabled = true;
+	}
+
+	void setApiVersion( PluginApiVersion apiVersion )
+	{
+		this.apiVersion = apiVersion;
 	}
 
 	protected Logger LOG( )
