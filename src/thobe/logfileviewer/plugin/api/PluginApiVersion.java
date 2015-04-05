@@ -25,17 +25,17 @@ public class PluginApiVersion
 	/**
 	 * Increase for incompatible changes
 	 */
-	private static final int MAJOR_VERSION = 3;
+	private static final int	MAJOR_VERSION	= 3;
 
 	/**
 	 * Increase for compatible changes
 	 */
-	private static final int MINOR_VERSION = 0;
+	private static final int	MINOR_VERSION	= 0;
 
 	/**
 	 * Increase for bugfixes
 	 */
-	private static final int BUGFIX_VERSION = 0;
+	private static final int	BUGFIX_VERSION	= 0;
 
 	private static final String	ATTR_MAJOR		= "major";
 	private static final String	ATTR_MINOR		= "minor";
@@ -95,11 +95,22 @@ public class PluginApiVersion
 		return bugfixVersion;
 	}
 
+	/**
+	 * Returns false if the major versions differ or if the minor version of the plugin is greater than this {@link PluginApiVersion}.
+	 * Otherwise true is returned.
+	 * @param versionOfPlugin
+	 * @return
+	 */
 	public boolean isCompatible( PluginApiVersion versionOfPlugin )
 	{
 		if ( versionOfPlugin.getMajorVersion( ) != getMajorVersion( ) )
 		{
 			return false;
+		}
+
+		if ( versionOfPlugin.getMinorVersion( ) > this.getMinorVersion( ) )
+		{
+			return true;
 		}
 
 		return true;

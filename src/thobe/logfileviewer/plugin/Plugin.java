@@ -72,7 +72,7 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	 * If true, the {@link Plugin} will be started and added to gui and will get {@link ILogLine}s.
 	 */
 	private boolean						enabled;
-
+	
 	public Plugin( String pluginName, String logChannelName )
 	{
 		super( logChannelName );

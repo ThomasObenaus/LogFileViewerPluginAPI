@@ -132,4 +132,5 @@ public interface IPlugin extends IPluginBase, IMemoryWatchable, ILogStreamDataLi
 	 * @return
 	 */
 	public IPluginPreferences getPluginPreferences( );
+
 }
