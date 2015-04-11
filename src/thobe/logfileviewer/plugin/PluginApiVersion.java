@@ -32,7 +32,7 @@ public class PluginApiVersion implements IPluginApiVersion
 	/**
 	 * Increase for bugfixes
 	 */
-	private static final int BUGFIX_VERSION = 0;
+	private static final int BUGFIX_VERSION = 1;
 
 	private int					majorVersion;
 	private int					minorVersion;
@@ -67,7 +67,7 @@ public class PluginApiVersion implements IPluginApiVersion
 			return false;
 		}
 
-		if ( versionOfPlugin.getMinorVersion( ) > this.getMinorVersion( ) )
+		if ( versionOfPlugin.getMinorVersion( ) < this.getMinorVersion( ) )
 		{
 			return false;
 		}
