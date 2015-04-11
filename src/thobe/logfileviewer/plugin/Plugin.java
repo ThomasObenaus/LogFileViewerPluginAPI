@@ -20,7 +20,7 @@ import thobe.logfileviewer.plugin.api.IPlugin;
 import thobe.logfileviewer.plugin.api.IPluginPreferences;
 import thobe.logfileviewer.plugin.api.IPluginUI;
 import thobe.logfileviewer.plugin.api.IPluginWindowManagerAccess;
-import thobe.logfileviewer.plugin.api.PluginApiVersion;
+import thobe.logfileviewer.plugin.api.PluginException;
 import thobe.logfileviewer.plugin.source.logline.ILogLine;
 import thobe.logfileviewer.plugin.source.logstream.ILogStream;
 import thobe.logfileviewer.plugin.source.logstream.ILogStreamAccess;
@@ -249,7 +249,8 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 		throw new IllegalAccessError( "IlogStreamRequester.response() is not implemented. If you want to send a request to the LogStream you have to implement this method in your class." );
 	}
 
-	public String getVersion( )
+	@Override
+	public String getPluginVersion( )
 	{
 		return this.getMajorVersion( ) + "." + this.getMinorVersion( ) + "." + this.getBugfixVersion( );
 	}
@@ -304,6 +305,25 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	{
 		// per default return null --> no website for this plugin
 		return null;
+	}
+
+	@Override
+	public void startPlugin( )
+	{
+		this.start( );
+	}
+
+	@Override
+	public void waitForPluginStop( ) throws PluginException
+	{
+		try
+		{
+			this.join( );
+		}
+		catch ( InterruptedException e )
+		{
+			throw new PluginException( "Error calling join on this thread ('" + this.getPluginName( ) + "'): " + e.getLocalizedMessage( ) );
+		}
 	}
 
 }

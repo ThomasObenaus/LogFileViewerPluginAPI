@@ -34,13 +34,13 @@ public interface IPluginAccess
 	 * @param pluginName
 	 * @return
 	 */
-	public Plugin getPlugin( String pluginName );
+	public IPlugin getPlugin( String pluginName );
 
 	/**
 	 * Returns all {@link Plugin} currently registered (Map<plugin-name,IPlugin>).
 	 * @return
 	 */
-	public Map<String, Plugin> getPlugins( );
+	public Map<String, IPlugin> getPlugins( );
 
 	/**
 	 * Returns a set containing all {@link IPluginUI}s that are not already attached to the gui.

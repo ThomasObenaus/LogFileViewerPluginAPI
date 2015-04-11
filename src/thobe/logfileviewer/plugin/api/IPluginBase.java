@@ -51,7 +51,7 @@ public interface IPluginBase
 	 * Should return the version of the plugin-api that was used for this {@link IPlugin}.
 	 * @return
 	 */
-	public PluginApiVersion getPluginApiVersion( );
+	public IPluginApiVersion getPluginApiVersion( );
 
 	/**
 	 * Should return the website where the plugin is hosted at or null if none is available.
@@ -76,4 +76,20 @@ public interface IPluginBase
 	 * @return
 	 */
 	public String getPluginAuthorEMailAddress( );
+
+	/**
+	 * Returns the version of this {@link IPluginBase}.
+	 * @return
+	 */
+	public String getPluginVersion( );
+
+	/**
+	 * Starts the {@link IPluginBase} (e.g. if this one is a thread Thread.start() will be called).
+	 */
+	public void startPlugin( );
+
+	/**
+	 * Waits until the {@link IPluginBase} was stopped (e.g. if this one is a thread Thread.join will be called).
+	 */
+	public void waitForPluginStop( ) throws PluginException;
 }
