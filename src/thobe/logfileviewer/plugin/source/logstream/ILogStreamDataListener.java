@@ -24,12 +24,6 @@ import thobe.logfileviewer.plugin.source.logline.ILogLine;
 public interface ILogStreamDataListener
 {
 	/**
-	 * Called whenever a new log-line matching the {@link Pattern} returned by {@link ILogStreamDataListener#getLineFilter()} is available.
-	 * @param blockOfLines
-	 */
-	public void onNewLine( ILogLine line );
-
-	/**
 	 * Called whenever a new list/block of log-lines matching the {@link Pattern} returned by {@link ILogStreamDataListener#getLineFilter()}
 	 * is available.
 	 * @param blockOfLines

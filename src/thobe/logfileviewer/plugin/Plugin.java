@@ -13,12 +13,15 @@ package thobe.logfileviewer.plugin;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import javax.swing.JComponent;
 
 import thobe.logfileviewer.plugin.api.IPlugin;
+import thobe.logfileviewer.plugin.api.IPluginAccess;
 import thobe.logfileviewer.plugin.api.IPluginPreferences;
 import thobe.logfileviewer.plugin.api.IPluginUI;
+import thobe.logfileviewer.plugin.api.IPluginUIComponent;
 import thobe.logfileviewer.plugin.api.IPluginWindowManagerAccess;
 import thobe.logfileviewer.plugin.api.PluginException;
 import thobe.logfileviewer.plugin.source.logline.ILogLine;
@@ -308,6 +311,27 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	}
 
 	@Override
+	public String getPluginDescription( )
+	{
+		// per default return null --> no description for this plugin
+		return null;
+	}
+
+	@Override
+	public IPluginUIComponent getUIComponent( )
+	{
+		//  per default return null --> no gui
+		return null;
+	}
+
+	@Override
+	public Pattern getLineFilter( )
+	{
+		// per default return null --> match all lines
+		return null;
+	}
+
+	@Override
 	public void startPlugin( )
 	{
 		this.start( );
@@ -324,6 +348,60 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 		{
 			throw new PluginException( "Error calling join on this thread ('" + this.getPluginName( ) + "'): " + e.getLocalizedMessage( ) );
 		}
+	}
+
+	@Override
+	public String getNameOfMemoryWatchable( )
+	{
+		return this.getPluginName( );
+	}
+
+	@Override
+	public boolean onStarted( )
+	{
+		// called on starting the plugin 
+		// other plugins might no be available at this point
+		return true;
+	}
+
+	@Override
+	public boolean onRegistered( IPluginAccess pluginAccess )
+	{
+		// called when this plugin is registered 
+		// other plugins are available at this point and can be
+		// referenced via IPluginAccess
+		return true;
+	}
+
+	@Override
+	public void onLogStreamOpened( )
+	{
+		// called whenever a new logstream (file or over ip) is opened
+	}
+
+	@Override
+	public void onPrepareCloseLogStream( )
+	{
+		// called whenever the current logstream will be closed
+	}
+
+	@Override
+	public void onLogStreamClosed( )
+	{
+		// called whenever the current logstream is closed
+	}
+
+	@Override
+	public void onUnRegistered( )
+	{
+		// called when this plugin is unregistered
+	}
+
+	@Override
+	public boolean onStopped( )
+	{
+		// called when this plugin is stopped
+		return true;
 	}
 
 }

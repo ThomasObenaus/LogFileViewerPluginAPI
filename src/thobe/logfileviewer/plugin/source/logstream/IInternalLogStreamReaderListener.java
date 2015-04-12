@@ -21,12 +21,6 @@ import java.util.List;
 public interface IInternalLogStreamReaderListener extends ILogStreamStateListener
 {
 	/**
-	 * Called whenever a new line is available (was read from the stream).
-	 * @param newLine
-	 */
-	public void onNewLine( String newLine );
-
-	/**
 	 * Called whenever a new block of lines is available (was read from the stream).
 	 * @param newLine
 	 */
