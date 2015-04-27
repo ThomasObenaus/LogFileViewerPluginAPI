@@ -13,6 +13,7 @@ package thobe.logfileviewer.plugin.source.logstream;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import thobe.logfileviewer.plugin.api.ITimeRange;
 import thobe.logfileviewer.plugin.source.logline.ILogLine;
 
 /**
@@ -27,8 +28,9 @@ public interface ILogStreamDataListener
 	 * Called whenever a new list/block of log-lines matching the {@link Pattern} returned by {@link ILogStreamDataListener#getLineFilter()}
 	 * is available.
 	 * @param blockOfLines
+	 * @param timeRanges - the {@link TimeRange}s this block of lines corresponds to
 	 */
-	public void onNewBlockOfLines( List<ILogLine> blockOfLines );
+	public void onNewBlockOfLines( List<ILogLine> blockOfLines, List<ITimeRange> timeRanges );
 
 	/**
 	 * This method should return a {@link Pattern}. This {@link Pattern} (regular expression) is used to filter the lines of the

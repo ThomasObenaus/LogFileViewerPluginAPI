@@ -8,7 +8,7 @@
 
 		<!-- set version here -->
 		<property name="LFVPA.Program-Version.Major" value="3" />
-		<property name="LFVPA.Program-Version.Minor" value="4" />
+		<property name="LFVPA.Program-Version.Minor" value="5" />
 		<property name="LFVPA.Program-Version.Bugfix" value="0" />
 		<property name="LFVPA.Program-Version" value="${LFVPA.Program-Version.Major}.${LFVPA.Program-Version.Minor}.${LFVPA.Program-Version.Bugfix}" />
 		<!-- set main-class here or uncomment line if u build a library -->		
