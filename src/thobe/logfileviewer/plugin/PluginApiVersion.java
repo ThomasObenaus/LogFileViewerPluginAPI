@@ -27,7 +27,7 @@ public class PluginApiVersion implements IPluginApiVersion
 	/**
 	 * Increase for compatible changes
 	 */
-	private static final int MINOR_VERSION = 5;
+	private static final int MINOR_VERSION = 6;
 
 	/**
 	 * Increase for bugfixes

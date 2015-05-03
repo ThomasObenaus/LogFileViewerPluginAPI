@@ -38,4 +38,10 @@ public interface ILogStreamDataListener
 	 * @return
 	 */
 	public Pattern getLineFilter( );
+
+	/**
+	 * Returns the name of this listener.
+	 * @return
+	 */
+	public String getNameOfDataListener( );
 }

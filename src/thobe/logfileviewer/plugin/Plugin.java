@@ -36,6 +36,8 @@ import thobe.logfileviewer.plugin.source.logstream.ILogStreamAccess;
  */
 public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 {
+	private static final Pattern		ALL_FILTER	= Pattern.compile( ".*" );
+
 	/**
 	 * true if a stop was requested --> in this case the {@link Plugin} has to leave its run-method
 	 */
@@ -327,8 +329,8 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 	@Override
 	public Pattern getLineFilter( )
 	{
-		// per default return null --> match all lines
-		return null;
+		// per default return ALL_FILTER --> match all lines
+		return ALL_FILTER;
 	}
 
 	@Override
@@ -337,6 +339,12 @@ public abstract class Plugin extends Thread implements IPluginUI, IPlugin
 		this.start( );
 	}
 
+	@Override
+	public String getNameOfDataListener( )
+	{
+		return this.getPluginName( );
+	}
+	
 	@Override
 	public void waitForPluginStop( ) throws PluginException
 	{
